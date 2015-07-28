@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="calculator">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="scripts/calculator.js"></script>
+    <title>Calculadora</title>
+</head>
+<body>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+            ul li {
+                float: left;
+            }
+
+                ul li.limite {
+                    clear: both;
+                }
+    </style>
+    <div ng-controller="CalculatorController as calc">
+        <p ng-model="calc.result"></p>
+        <form>
+            <label>Name:</label>
+            <input type="text" class="form-control" type="text" disabled ng-model="result" placeholder="">
+            <button type="submit" ng-click="calc.calcular()" class="btn btn-primary">=</button>
+            <button type="submit" ng-click="calc.limpiar()" class="btn btn-danger">AC</button>
+        <ul>
+            <li ng-repeat="n in '0123456789/*+-'.split('')" ng-class="{limite:($index % 4 == 0)}">
+                <button ng-click="calc.buton(n)" class="btn btn-primary">
+                    {{n}}
+                </button>
+            </li>
+        </ul>
+        </form>
+    </div>
+
+
+</body>
+</html>
